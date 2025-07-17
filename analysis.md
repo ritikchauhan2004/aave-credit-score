@@ -3,11 +3,13 @@
 ---
 ## 📊 Analysis Random Forest Model
 
--Distribution by Random Forest:
+- **Distribution by Random Forest**:
+  
     <img src="outputs/scores/ran_credit_score_distribution.png" alt="Credit Score Distribution" width="500" height="300"/>
 
-- **SHAP Feature Importance by Random Forest**:  
-  <img src="outputs/shap/random_forest_shap_summary_plot.png" alt="Credit Score Distribution" width="500" height="300/>
+- **SHAP Feature Importance by Random Forest**:
+      <img src="outputs/shap/random_forest_shap_summary_plot.png" alt="Shap Value" width="500" height="300"/>
+    
 
 ---
 - **🔻 Behavior of Low-Score Wallets (<300)**:
@@ -58,13 +60,15 @@
 ---
 ## 📊 Analysis XGBoost Model
 
--Distribution by Random Forest:
+- **Distribution by XGBoost**:
+        
     <img src="outputs/scores/xgb_credit_score_distribution.png" alt="Credit Score Distribution" width="500" height="300"/>
 
-- **SHAP Feature Importance by XGBoost**:  
-  <img src="outputs/shap/xgboost_shap_summary_plot.png" alt="Credit Score Distribution" width="500" height="300/>
+- **SHAP Feature Importance by XGBoost**:
+        
+    <img src="outputs/shap/xgboost_shap_summary_plot.png" alt="Credit Score Distribution" width="500" height="300"/>
 ---
-- **🔻 Behavior of Low-Score Wallets (<300)**:
+**🔻 Behavior of Low-Score Wallets (<300)**:
 | Feature Name             | Mean     | Std Dev  |
 |--------------------------|----------|----------|
 | num_borrow               | 4.55e+00 | 9.55e+00 |
@@ -87,7 +91,7 @@
 | predicted_credit_score   | 2.63e+02 | 8.67e+00 |
 
 
-- **🔺 Behavior of High-Score Wallets (≥700)**:
+**🔺 Behavior of High-Score Wallets (≥700)**:
 | Feature Name             | Mean     | Std Dev  |
 |--------------------------|----------|----------|
 | num_borrow               | 2.13e+01 | 2.26e+01 |
