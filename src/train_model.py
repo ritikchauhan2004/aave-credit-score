@@ -9,7 +9,7 @@ from sklearn.ensemble import RandomForestRegressor
 from xgboost import XGBRegressor
 from sklearn.metrics import root_mean_squared_error, r2_score, mean_squared_error
 
-
+# Main function to train and evaluate models
 def main():
     # Load features
     df = pd.read_csv("data/processed/features_per_wallet.csv")
@@ -17,7 +17,7 @@ def main():
     # Select features used for scoring and training
     features_to_use = [
         'repayment_efficiency', 'total_repay', 'num_repay', 'deposit_frequency',
-        'repay_borrow_ratio', 'total_deposit', 'net_borrow', 'activity_score'
+        'borrow_to_deposit_ratio', 'total_deposit', 'net_borrow', 'activity_score'
     ]
     X = df[features_to_use]
 
@@ -26,11 +26,11 @@ def main():
     X_scaled = pd.DataFrame(scaler.fit_transform(X), columns=features_to_use)
 
     df['credit_score'] = (
-        0.25 * X_scaled['repayment_efficiency'] +
+        0.20 * X_scaled['repayment_efficiency'] +
         0.20 * X_scaled['total_repay'] +
         0.15 * X_scaled['num_repay'] +
         0.10 * X_scaled['deposit_frequency'] +
-        0.10 * X_scaled['repay_borrow_ratio'] +
+        0.15 * (1 - X_scaled['borrow_to_deposit_ratio']) +
         0.10 * X_scaled['total_deposit'] +
         0.05 * (1 - X_scaled['net_borrow']) +
         0.05 * X_scaled['activity_score']

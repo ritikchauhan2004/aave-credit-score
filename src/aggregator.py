@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from json_loader import stream_transactions, convert_timestamp
 
-
+# aggregate wallet features
 def aggregate_wallet_features(json_path: str) -> pd.DataFrame:
     records = []
 
@@ -60,10 +60,6 @@ def aggregate_wallet_features(json_path: str) -> pd.DataFrame:
             agg_df[col] = 0
 
     # Ratios
-    agg_df["repay_borrow_ratio"] = agg_df.apply(
-        lambda row: row["total_repay"] / row["total_borrow"]
-        if row["total_borrow"] > 0 else 0, axis=1
-    )
     agg_df["total_transactions"] = df.groupby("wallet").size().values
 
     # Drop columns we don’t want
@@ -87,7 +83,7 @@ def aggregate_wallet_features(json_path: str) -> pd.DataFrame:
     features = [
         'wallet', 'num_borrow', 'num_deposit', 'num_redeemunderlying', 'num_repay',
         'total_borrow', 'total_deposit', 'total_redeemunderlying', 'total_repay',
-        'avg_tx_gap_sec', 'repay_borrow_ratio', 'total_transactions',
+        'avg_tx_gap_sec', 'total_transactions',
         'activity_score', 'net_borrow', 'borrow_to_deposit_ratio',
         'deposit_frequency', 'repay_frequency', 'repayment_efficiency',
         'avg_repay_per_tx'

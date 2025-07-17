@@ -4,21 +4,19 @@ import json
 import os
 from sklearn.preprocessing import MinMaxScaler
 
-
+# Load features from CSV and prepare for scoring
 def load_features(feature_path: str):
     df = pd.read_csv(feature_path)
 
     features_to_use = [
         'repayment_efficiency', 'total_repay', 'num_repay', 'deposit_frequency',
-        'repay_borrow_ratio', 'total_deposit', 'net_borrow', 'activity_score'
+        'borrow_to_deposit_ratio', 'total_deposit', 'net_borrow', 'activity_score'
     ]
     return df, df[features_to_use], features_to_use
 
-
+# Get model path based on user selection
 def get_model_path(model_name: str) -> str:
-    """
-    Map user choice to actual model path.
-    """
+
     model_map = {
         "random_forest": "outputs/models/random_forest_model.pkl",
         "xgboost": "outputs/models/xgboost_model.pkl"
@@ -28,7 +26,7 @@ def get_model_path(model_name: str) -> str:
         raise FileNotFoundError(f"❌ Model file not found for selection: '{model_name}'")
     return path
 
-
+# Predict credit scores using the selected model
 def predict_scores(model_path: str, feature_path: str, output_path: str):
     df, X, features_to_use = load_features(feature_path)
 

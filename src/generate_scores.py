@@ -4,7 +4,7 @@ from scorer import predict_scores
 from explain_model_shap import explain_model
 from analyze_scored_wallets import analyze_wallet_scores
 
-
+# Main function to generate wallet credit scores
 def main():
     parser = argparse.ArgumentParser(description="Generate wallet credit scores using a selected trained model.")
     parser.add_argument(

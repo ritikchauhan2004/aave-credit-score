@@ -4,13 +4,13 @@ import joblib
 import matplotlib.pyplot as plt
 import os
 
-
+# Explain model using SHAP values
 def explain_model(model_path: str, feature_path: str, model_name: str):
     # Load data
     df = pd.read_csv(feature_path)
     features = [
         'repayment_efficiency', 'total_repay', 'num_repay', 'deposit_frequency',
-        'repay_borrow_ratio', 'total_deposit', 'net_borrow', 'activity_score'
+        'borrow_to_deposit_ratio', 'total_deposit', 'net_borrow', 'activity_score'
     ]
     X = df[features]
 

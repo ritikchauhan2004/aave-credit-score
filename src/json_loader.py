@@ -1,12 +1,9 @@
 import ijson
-from datetime import datetime
+from datetime import datetime, UTC
 import os
 
+# Efficiently stream and process large JSON files
 def stream_transactions(json_path):
-    """
-    Lazily stream records from a large JSON array stored in a file.
-    Each item in the array is yielded as a dictionary.
-    """
     if not os.path.exists(json_path):
         raise FileNotFoundError(f"{json_path} does not exist.")
 
@@ -15,11 +12,8 @@ def stream_transactions(json_path):
         for record in ijson.items(file, 'item'):
             yield record
 
-
+# Convert timestamp to datetime object
 def convert_timestamp(ts):
-    """
-    Converts a UNIX timestamp to a UTC datetime object.
-    """
     try:
         return datetime.utcfromtimestamp(int(ts))
     except Exception as e:

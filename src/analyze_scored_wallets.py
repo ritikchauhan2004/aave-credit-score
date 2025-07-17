@@ -4,7 +4,7 @@ import seaborn as sns
 import os
 import json
 
-
+# Analyze and visualize credit scores for wallets
 def analyze_wallet_scores(scored_file_path: str, model_name: str, score_column: str = "predicted_credit_score"):
     if not os.path.exists(scored_file_path):
         print(f"❌ File not found: {scored_file_path}")
