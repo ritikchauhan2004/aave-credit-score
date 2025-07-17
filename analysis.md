@@ -8,7 +8,8 @@
     <img src="outputs/scores/ran_credit_score_distribution.png" alt="Credit Score Distribution" width="500" height="300"/>
 
 - **SHAP Feature Importance by Random Forest**:
-      <img src="outputs/shap/random_forest_shap_summary_plot.png" alt="Shap Value" width="500" height="300"/>
+      
+    <img src="outputs/shap/random_forest_shap_summary_plot.png" alt="Shap Value" width="500" height="300"/>
     
 
 ---
